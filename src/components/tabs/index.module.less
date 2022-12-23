@@ -1,0 +1,36 @@
+/*导航栏*/
+@import url("../../styles/theme.less");
+
+.navBar {
+  background-color: @white-color;
+  display: flex;
+  width: 750px;
+  height: 100px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  color: @text-color-strong;
+  font-size: @font-size-large;
+  box-sizing: border-box;
+  border-bottom: 1px solid @divider-color-weak;
+  .active {
+    transition: all;
+    font-weight: bold;
+
+    color: @primary-color;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .active::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    width: 40px;
+    height: 8px;
+    background-color: @primary-color;
+    border-radius: 4px;
+  }
+}

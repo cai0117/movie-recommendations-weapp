@@ -1,0 +1,60 @@
+@import url("../../styles/theme.less");
+.container {
+  width: 750px;
+  height: 100%;
+  .header {
+    width: 750px;
+  }
+}
+.hidden {
+  display: none;
+}
+.dailog {
+  width: 750px;
+  background-color: @white-color;
+  border-radius: @border-radius-large @border-radius-large 0 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  animation: showDailog 0.3s linear;
+  box-sizing: border-box;
+  padding-bottom: 80px;
+}
+@keyframes showDailog {
+  from {
+    bottom: -1000px;
+  }
+  to {
+    bottom: 0;
+  }
+}
+@keyframes showCover {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
+}
+.showFlutter {
+  width: 750px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+.hideDailog {
+  width: 750px;
+  height: 0;
+  opacity: 0;
+  background-color: @white-color;
+  border-radius: @border-radius-large @border-radius-large 0 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  transition: all 0.3s linear;
+}

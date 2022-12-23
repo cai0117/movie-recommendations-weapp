@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "movie-recommendations-wx",
   "description": "movie-recommendations-wx",
-  "appid": "touristappid",
+  "appid": "wxc6fd7221483e23d6",
   "setting": {
     "urlCheck": true,
     "es6": false,

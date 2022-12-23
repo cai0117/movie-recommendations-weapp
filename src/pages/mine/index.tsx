@@ -3,11 +3,11 @@ import { View, Text } from "@tarojs/components";
 import BasePage from "@/components/base-page";
 import styles from "./index.module.less";
 
-const Index = () => {
+const MinePage = () => {
   return (
-    <BasePage title="首页">
+    <BasePage title="个人中心">
       <Text>Hello world!</Text>
     </BasePage>
   );
 };
-export default Index;
+export default MinePage;

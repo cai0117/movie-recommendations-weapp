@@ -1,0 +1,48 @@
+@import url(../../styles/theme.less);
+
+.header {
+  background-color: @white-color;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.fixedHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
+
+.headerWithBackButton {
+  padding: 0 60px 0 0;
+}
+
+.headerLeftComponent {
+  padding-left: 60px;
+}
+
+.headerOnlyBackButton {
+  background-color: transparent;
+}
+
+.backButton {
+  // padding: 20px 10px 5px 20px;
+  padding: 10px 10px 10px 20px;
+  width: 30px;
+  height: 30px;
+}
+
+.title {
+  margin: auto;
+  color: @text-color-strong;
+  font-size: @font-size-large;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
