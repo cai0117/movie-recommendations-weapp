@@ -1,5 +1,10 @@
 export default defineAppConfig({
-  pages: ["pages/index/index", "pages/mine/index"],
+  pages: [
+    "pages/index/index",
+    "pages/mine/index",
+    "pages/movie-classification/index",
+    "pages/community/index",
+  ],
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",
@@ -17,12 +22,18 @@ export default defineAppConfig({
         selectedIconPath: "./images/store_selected.png",
         text: "首页",
       },
-      // {
-      //   pagePath: "pages/combo/index",
-      //   iconPath: "./images/order.png",
-      //   selectedIconPath: "./images/order_selected.png",
-      //   text: "跟拍套餐"
-      // },
+      {
+        pagePath: "pages/movie-classification/index",
+        iconPath: "./images/order.png",
+        selectedIconPath: "./images/order_selected.png",
+        text: "电影分类",
+      },
+      {
+        pagePath: "pages/community/index",
+        iconPath: "./images/order.png",
+        selectedIconPath: "./images/order_selected.png",
+        text: "社区",
+      },
       {
         pagePath: "pages/mine/index",
         iconPath: "./images/account.png",
