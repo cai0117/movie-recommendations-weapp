@@ -18,6 +18,7 @@ type Props = React.PropsWithChildren<
     titleClassName: string;
     stickerFix: boolean; //sticker是否fix，默认relative
     headerLeftComponent?: () => React.ReactNode;
+    headerSearchView?: () => React.ReactNode;
     footer: () => React.ReactNode;
     overlay: () => React.ReactNode;
     sticker: () => React.ReactNode;
@@ -38,6 +39,7 @@ const BasePage: React.FC<Props> = (props) => {
     titleClassName = "",
     stickerFix = false,
     headerLeftComponent,
+    headerSearchView,
     footer,
     overlay,
     sticker,
@@ -67,6 +69,7 @@ const BasePage: React.FC<Props> = (props) => {
       {!hideHeader && (
         <NavBar
           headerLeftComponent={headerLeftComponent}
+          headerSearchView={headerSearchView}
           title={title}
           fixed={fixedHeader}
           className={headerClassName}

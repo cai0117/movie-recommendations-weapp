@@ -11,19 +11,21 @@ type Props = Partial<{
   className: string;
   titleClassName: string;
   headerLeftComponent?: () => React.ReactNode;
+  headerSearchView?: () => React.ReactNode;
   goBack?: () => void;
   showWhiteArrow: boolean;
 }>;
 
-const NavBar: React.FC<Props> = props => {
+const NavBar: React.FC<Props> = (props) => {
   const {
     title,
     fixed,
     className = "",
     titleClassName = "",
     headerLeftComponent,
+    headerSearchView,
     goBack,
-    showWhiteArrow
+    showWhiteArrow,
   } = props;
 
   const showBackBtn = useMemo(() => {
@@ -45,7 +47,7 @@ const NavBar: React.FC<Props> = props => {
       navBarHeight,
       systemStatusBarHeight,
       menuButtonTop,
-      menuButtonObject
+      menuButtonObject,
     };
   }, []);
 
@@ -64,7 +66,7 @@ const NavBar: React.FC<Props> = props => {
       style={{
         height: navHeight.navBarHeight + 5,
         paddingBottom: 5,
-        paddingTop: navHeight.systemStatusBarHeight
+        paddingTop: navHeight.systemStatusBarHeight,
       }}
     >
       {headerLeftComponent && headerLeftComponent()}
@@ -79,12 +81,13 @@ const NavBar: React.FC<Props> = props => {
         <View
           className={`${styles.title} ${titleClassName}`}
           style={{
-            width: "150px"
+            width: "150px",
           }}
         >
           {title}
         </View>
       )}
+      {headerSearchView && headerSearchView()}
     </View>
   );
 };

@@ -1,0 +1,30 @@
+@import url("../../styles/theme.less");
+
+.city {
+  position: absolute;
+  left: 30px;
+  font-size: @font-size-normal;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .text {
+    min-width: 90px;
+    max-width: 200px;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .down {
+    padding-left: 10px;
+    width: 40px;
+  }
+}
+.search {
+  background-color: @white-color;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
