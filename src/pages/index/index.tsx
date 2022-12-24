@@ -1,10 +1,19 @@
-import React, { Component, PropsWithChildren } from "react";
-import { View, Text, Image, Input } from "@tarojs/components";
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  Image,
+  Input,
+  BaseEventOrig,
+  InputProps,
+} from "@tarojs/components";
 import BasePage from "@/components/base-page";
 import downImg from "@/images/down.svg";
+import SEARCHICON from "@/images/search.png";
 import styles from "./index.module.less";
 
 const Index = () => {
+  const [searchValue, setSearchValue] = useState<string>("");
   const goCityList = () => {
     // Taro.navigateTo({
     //   url: "/pages/city/index",
@@ -21,6 +30,10 @@ const Index = () => {
     //   }
     // });
   };
+
+  const hanldeInput = (e: BaseEventOrig<InputProps.inputEventDetail>) => {
+    setSearchValue(e.detail.value);
+  };
   return (
     <BasePage
       headerLeftComponent={() => (
@@ -30,8 +43,20 @@ const Index = () => {
         </View>
       )}
       headerSearchView={() => (
-        <View className={styles.search} onClick={goCityList}>
-          <Input />
+        <View className={styles.search}>
+          <View className={styles.icon}>
+            <Image
+              className={styles.searchIcon}
+              src={SEARCHICON}
+              mode="widthFix"
+            />
+          </View>
+          <Input
+            className={styles.input}
+            placeholder="输入"
+            focus
+            onBlur={hanldeInput}
+          />
         </View>
       )}
     >
