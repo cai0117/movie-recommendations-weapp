@@ -11,6 +11,9 @@ import BasePage from "@/components/base-page";
 import downImg from "@/images/down.svg";
 import SEARCHICON from "@/images/search.png";
 import styles from "./index.module.less";
+import HeaderSwiper from "./header-swiper";
+import HotOnline from "./hot-online";
+import ComingSoon from "./coming-soon";
 
 const Index = () => {
   const [searchValue, setSearchValue] = useState<string>("");
@@ -36,6 +39,8 @@ const Index = () => {
   };
   return (
     <BasePage
+      className={styles.page}
+      headerClassName={styles.headerStyle}
       headerLeftComponent={() => (
         <View className={styles.city} onClick={goCityList}>
           <Text className={styles.text}>厦门市</Text>
@@ -60,7 +65,9 @@ const Index = () => {
         </View>
       )}
     >
-      <Text>Hello world!</Text>
+      <HeaderSwiper />
+      <HotOnline />
+      <ComingSoon />
     </BasePage>
   );
 };

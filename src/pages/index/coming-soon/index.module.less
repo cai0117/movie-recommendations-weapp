@@ -1,0 +1,70 @@
+@import url("../../../styles/theme.less");
+.container {
+  width: 710px;
+  border-radius: @border-radius-large;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: @white-color;
+}
+.hot {
+  font-size: @font-size-xl;
+  font-weight: bold;
+}
+.info {
+  width: 670px;
+  padding: 20px 0 20px 0;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.goHot {
+  color: @text-color-weak;
+  font-size: @font-size-small;
+}
+.arrow {
+  width: 25px;
+  height: 25px;
+}
+.imgView {
+  width: 165px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.img {
+  width: 165px;
+  height: 240px;
+  border-radius: @border-radius-large;
+}
+.title {
+  padding-top: 20px;
+  font-size: @font-size-large;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.buyer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  width: 120px;
+  height: 60px;
+  line-height: 60px;
+  color: @white-color;
+  font-size: @font-size-normal;
+  background-color: #3a9fe7;
+  border-radius: @border-radius-larger;
+}
+.time {
+  color: @text-color-weak;
+  font-size: @font-size-normal;
+}
+.scrollY {
+  width: 100%;
+
+  flex: 1;
+  overflow: scroll;
+}
