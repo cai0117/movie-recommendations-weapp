@@ -1,0 +1,67 @@
+@import url("../../../styles/theme.less");
+
+//ffac2d  b2a596
+.img {
+  width: 165px;
+  height: 240px;
+  border-radius: @border-radius-large;
+}
+
+.content {
+  width: 750px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.communityContainer {
+  width: 710px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid @divider-color-weak;
+  padding-bottom: 20px;
+}
+.info {
+  flex: 1;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  line-height: 60px;
+  overflow: hidden// 使子元素可以省略;
+}
+.title {
+  font-size: @font-size-xl;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.point {
+  font-size: @font-size-normal;
+  color: @text-color-normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.img {
+  width: 140px;
+  height: 200px;
+  border-radius: @border-radius-large;
+}
+.pub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 60px;
+}
+.evo {
+  color: #ffac2d;
+  font-size: @font-size-xl;
+  font-weight: bold;
+}
+.man {
+  color: #b2a596;
+  font-size: @font-size-normal;
+}
