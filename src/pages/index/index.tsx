@@ -34,7 +34,7 @@ const Index = () => {
     // });
   };
 
-  const hanldeInput = (e: BaseEventOrig<InputProps.inputEventDetail>) => {
+  const handleInput = (e: BaseEventOrig<InputProps.inputEventDetail>) => {
     setSearchValue(e.detail.value);
   };
   return (
@@ -60,7 +60,7 @@ const Index = () => {
             className={styles.input}
             placeholder="输入"
             focus
-            onBlur={hanldeInput}
+            onBlur={handleInput}
           />
         </View>
       )}

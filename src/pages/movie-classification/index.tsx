@@ -9,7 +9,7 @@ import SelectView from "./select-view";
 import ScrollMovie from "./scroll-movie";
 
 const MovieClassificationPage = () => {
-  const [comfirmSelect, setComfirmSelect] = useState<boolean>(false);
+  const [confirmSelect, setConfirmSelect] = useState<boolean>(false);
 
   return (
     <BasePage
@@ -18,14 +18,14 @@ const MovieClassificationPage = () => {
       headerLeftComponent={() => (
         <View
           className={styles.selectContainer}
-          onClick={() => setComfirmSelect((pre) => !pre)}
+          onClick={() => setConfirmSelect((pre) => !pre)}
         >
-          <Text className={comfirmSelect ? styles.beSelect : styles.select}>
+          <Text className={confirmSelect ? styles.beSelect : styles.select}>
             筛选
           </Text>
           <Image
             className={styles.arrow}
-            src={comfirmSelect ? ARROWUP : ARROWDOWN}
+            src={confirmSelect ? ARROWUP : ARROWDOWN}
             mode="widthFix"
           />
         </View>
@@ -44,8 +44,8 @@ const MovieClassificationPage = () => {
       )}
     >
       <SelectView
-        comfirmSelect={comfirmSelect}
-        setComfirmSelect={setComfirmSelect}
+        confirmSelect={confirmSelect}
+        setConfirmSelect={setConfirmSelect}
       />
       <ScrollMovie />
     </BasePage>

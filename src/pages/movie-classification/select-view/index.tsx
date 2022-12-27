@@ -4,11 +4,11 @@ import Taro from "@tarojs/taro";
 import styles from "./index.module.less";
 
 type Props = {
-  comfirmSelect: boolean;
-  setComfirmSelect: React.Dispatch<React.SetStateAction<boolean>>;
+  confirmSelect: boolean;
+  setConfirmSelect: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const SelectView: React.FC<Props> = (props) => {
-  const { comfirmSelect, setComfirmSelect } = props;
+  const { confirmSelect, setConfirmSelect } = props;
   const [labelSelect, setLabelSelect] = useState<boolean>(false);
   const navHeight = useMemo(() => {
     let menuButtonObject = Taro.getMenuButtonBoundingClientRect();
@@ -27,8 +27,8 @@ const SelectView: React.FC<Props> = (props) => {
     setLabelSelect((pre) => !pre);
   };
 
-  const handleComfirm = () => {
-    setComfirmSelect(false);
+  const handleConfirm = () => {
+    setConfirmSelect(false);
   };
 
   const handleReset = () => {
@@ -36,7 +36,7 @@ const SelectView: React.FC<Props> = (props) => {
   };
   return (
     <View
-      className={comfirmSelect ? styles.selectContent : styles.hide}
+      className={confirmSelect ? styles.selectContent : styles.hide}
       style={{ top: `${navHeight - 5}` }}
     >
       <View className={styles.labelContent}>
@@ -52,14 +52,14 @@ const SelectView: React.FC<Props> = (props) => {
           <Button className={styles.reset} onClick={handleReset}>
             重置
           </Button>
-          <Button className={styles.comfirm} onClick={handleComfirm}>
+          <Button className={styles.confirm} onClick={handleConfirm}>
             确定
           </Button>
         </View>
       </View>
       <View
         className={styles.mask}
-        onClick={() => setComfirmSelect(false)}
+        onClick={() => setConfirmSelect(false)}
       ></View>
     </View>
   );

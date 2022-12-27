@@ -7,7 +7,15 @@ type Props = {};
 
 const HeaderSwiper: React.FC<Props> = (props) => {
   return (
-    <Swiper className={styles.swiper} indicatorDots autoplay>
+    <Swiper
+      className={styles.swiper}
+      indicatorDots
+      autoplay
+      indicatorActiveColor="#ffffff"
+    >
+      <SwiperItem>
+        <Image src={EXAMPLE} mode="aspectFill" className={styles.img} />
+      </SwiperItem>
       <SwiperItem>
         <Image src={EXAMPLE} mode="aspectFill" className={styles.img} />
       </SwiperItem>
