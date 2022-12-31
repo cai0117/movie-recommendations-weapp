@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,12 @@ import {
   BaseEventOrig,
   InputProps,
 } from "@tarojs/components";
+import {
+  Movie,
+  MovieSoon,
+  useLazyGetAllHotMovieQuery,
+  useLazyGetAllSoonMovieQuery,
+} from "@/api/movie";
 import BasePage from "@/components/base-page";
 import downImg from "@/images/down.svg";
 import SEARCHICON from "@/images/search.png";
@@ -17,6 +23,11 @@ import ComingSoon from "./coming-soon";
 
 const Index = () => {
   const [searchValue, setSearchValue] = useState<string>("");
+  const [getHotMovieTrigger, { isLoading }] = useLazyGetAllHotMovieQuery();
+  const [getSoonMovieTrigger, { isLoading: sonnLoading }] =
+    useLazyGetAllSoonMovieQuery();
+  const hotMovie = useRef<Movie[]>([]);
+  const soonMovie = useRef<MovieSoon[]>([]);
   const goCityList = () => {
     // Taro.navigateTo({
     //   url: "/pages/city/index",
@@ -33,12 +44,24 @@ const Index = () => {
     //   }
     // });
   };
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    try {
+      const payload = await getHotMovieTrigger().unwrap();
+      const soon = await getSoonMovieTrigger().unwrap();
+      hotMovie.current = payload;
+      soonMovie.current = soon;
+    } catch (error) {}
+  };
 
   const handleInput = (e: BaseEventOrig<InputProps.inputEventDetail>) => {
     setSearchValue(e.detail.value);
   };
   return (
     <BasePage
+      isLoading={isLoading || sonnLoading}
       className={styles.page}
       headerClassName={styles.headerStyle}
       headerLeftComponent={() => (
@@ -66,8 +89,8 @@ const Index = () => {
       )}
     >
       <HeaderSwiper />
-      <HotOnline />
-      <ComingSoon />
+      <HotOnline data={hotMovie.current} />
+      <ComingSoon data={soonMovie.current} />
     </BasePage>
   );
 };

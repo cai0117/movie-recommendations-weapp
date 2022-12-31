@@ -1,14 +1,16 @@
 import React, { useMemo, useState } from "react";
 import { View, Button } from "@tarojs/components";
+import { Dict } from "@/api/dict";
 import Taro from "@tarojs/taro";
 import styles from "./index.module.less";
 
 type Props = {
   confirmSelect: boolean;
+  data: Dict[];
   setConfirmSelect: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const SelectView: React.FC<Props> = (props) => {
-  const { confirmSelect, setConfirmSelect } = props;
+  const { confirmSelect, setConfirmSelect, data } = props;
   const [labelSelect, setLabelSelect] = useState<boolean>(false);
   const navHeight = useMemo(() => {
     let menuButtonObject = Taro.getMenuButtonBoundingClientRect();
@@ -41,12 +43,15 @@ const SelectView: React.FC<Props> = (props) => {
     >
       <View className={styles.labelContent}>
         <View className={styles.content}>
-          <View
-            className={labelSelect ? styles.selectLabel : styles.label}
-            onClick={handleSelect}
-          >
-            全部
-          </View>
+          {data.map((res) => (
+            <View
+              key={res.id}
+              className={labelSelect ? styles.selectLabel : styles.label}
+              onClick={handleSelect}
+            >
+              {res.name}
+            </View>
+          ))}
         </View>
         <View className={styles.button}>
           <Button className={styles.reset} onClick={handleReset}>
