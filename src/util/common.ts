@@ -9,3 +9,19 @@ export const formatDate = (date: string, indexMonth: boolean) => {
     return year + "年" + month + "月" + day + "日";
   }
 };
+
+//评价人数格式化
+export const formatEvoNum = (data: number) => {
+  let param: string;
+  let size = 10000;
+  let unit = ["", "万"];
+  let formatData: number;
+
+  if (data < size) {
+    return data;
+  } else {
+    formatData = Math.floor(Math.log(data) / Math.log(size));
+    param = (data / Math.pow(size, formatData)).toFixed(1);
+    return param + unit[formatData];
+  }
+};

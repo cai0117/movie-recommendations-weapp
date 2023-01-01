@@ -1,17 +1,48 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { View, Button } from "@tarojs/components";
 import { Dict } from "@/api/dict";
 import Taro from "@tarojs/taro";
+import TypeLabel from "./type-label";
 import styles from "./index.module.less";
 
 type Props = {
   confirmSelect: boolean;
   data: Dict[];
   setConfirmSelect: React.Dispatch<React.SetStateAction<boolean>>;
+  selectValue: React.MutableRefObject<string[]>;
+};
+type selectDict = {
+  key: number;
+  value: string;
+  check: boolean;
 };
 const SelectView: React.FC<Props> = (props) => {
-  const { confirmSelect, setConfirmSelect, data } = props;
-  const [labelSelect, setLabelSelect] = useState<boolean>(false);
+  const { confirmSelect, setConfirmSelect, data, selectValue } = props;
+  const [labelSelect, setLabelSelect] = useState<selectDict[]>([]);
+  const initLabel = useMemo(() => {
+    if (data)
+      return data.map(
+        (res) =>
+          Object.assign({
+            key: res.id,
+            value: res.name,
+            check: false,
+          }) as selectDict
+      );
+    return [];
+  }, [data]);
+  useEffect(() => {
+    setLabelSelect(initLabel);
+  }, [initLabel]);
+
+  const getLabelById = useMemo(
+    () => (id: number) => {
+      if (labelSelect.length <= 0) return null;
+      return labelSelect.find((item) => item.key === id)!;
+    },
+    [labelSelect]
+  );
+
   const navHeight = useMemo(() => {
     let menuButtonObject = Taro.getMenuButtonBoundingClientRect();
     let systemInfo = Taro.getSystemInfoSync();
@@ -25,16 +56,18 @@ const SelectView: React.FC<Props> = (props) => {
     return navBarHeight;
   }, []);
 
-  const handleSelect = () => {
-    setLabelSelect((pre) => !pre);
-  };
-
   const handleConfirm = () => {
+    selectValue.current = labelSelect
+      .map((res) => (res.check ? res.value : ""))
+      .filter((item) => item.length > 0);
     setConfirmSelect(false);
   };
-
   const handleReset = () => {
-    setLabelSelect(false);
+    let temp = labelSelect;
+    const result = temp.map((res) => {
+      return { key: res.key, value: res.value, check: false };
+    });
+    setLabelSelect(result);
   };
   return (
     <View
@@ -44,13 +77,12 @@ const SelectView: React.FC<Props> = (props) => {
       <View className={styles.labelContent}>
         <View className={styles.content}>
           {data.map((res) => (
-            <View
+            <TypeLabel
+              data={res}
               key={res.id}
-              className={labelSelect ? styles.selectLabel : styles.label}
-              onClick={handleSelect}
-            >
-              {res.name}
-            </View>
+              getLabelById={getLabelById(res.id)}
+              setLabelSelect={setLabelSelect}
+            />
           ))}
         </View>
         <View className={styles.button}>

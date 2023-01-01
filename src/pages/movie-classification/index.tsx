@@ -13,8 +13,9 @@ const MovieClassificationPage = () => {
   const [confirmSelect, setConfirmSelect] = useState<boolean>(false);
   const dict = useRef<Dict[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const selectValue = useRef<string[]>([]);
   const [getDictTrigger, { isLoading }] = useLazyGetAllDictQuery();
-
+  console.log(selectValue.current);
   useEffect(() => {
     fetchData();
   }, []);
@@ -62,8 +63,9 @@ const MovieClassificationPage = () => {
         confirmSelect={confirmSelect}
         setConfirmSelect={setConfirmSelect}
         data={dict.current}
+        selectValue={selectValue}
       />
-      <ScrollMovie setLoading={setLoading} />
+      <ScrollMovie setLoading={setLoading} label={selectValue.current} />
     </BasePage>
   );
 };

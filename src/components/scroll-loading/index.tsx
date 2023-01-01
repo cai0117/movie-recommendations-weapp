@@ -11,16 +11,9 @@ type Props = PropsWithChildren<{
   setData: React.Dispatch<React.SetStateAction<any[]>>;
 }>;
 
-const ScrollLoading: React.FC<Props> = props => {
-  const {
-    getApi,
-    setLoading,
-    className,
-    children,
-    input,
-    data,
-    setData
-  } = props;
+const ScrollLoading: React.FC<Props> = (props) => {
+  const { getApi, setLoading, className, children, input, data, setData } =
+    props;
   const [refresherTriggered, setRefresherTriggered] = useState<boolean>(false);
   const [total, setTotal] = useState<number>(0);
 
@@ -33,7 +26,7 @@ const ScrollLoading: React.FC<Props> = props => {
       const payload = await getApi({
         size: 10,
         current: 1,
-        input: input
+        input: input,
       }).unwrap();
       setData(payload.records);
       setTotal(payload.total);
@@ -50,7 +43,7 @@ const ScrollLoading: React.FC<Props> = props => {
       const orderList = await getApi({
         size: 10,
         current: currentIndex,
-        input: input
+        input: input,
       }).unwrap();
       setTotal(orderList.total);
       setData([...data, ...orderList.records]);
@@ -67,7 +60,7 @@ const ScrollLoading: React.FC<Props> = props => {
       const orderList = await getApi({
         size: 10,
         current: 1,
-        input: input
+        input: input,
       }).unwrap();
       setData(orderList.records);
       setRefresherTriggered(false);
