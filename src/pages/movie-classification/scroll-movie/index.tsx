@@ -20,7 +20,7 @@ const ScrollMovie: React.FC<Props> = (props) => {
   return (
     <ScrollLoading
       className={styles.scroll}
-      input={getInput}
+      page={getInput}
       setLoading={setLoading}
       getApi={getAllMovie}
       data={data}

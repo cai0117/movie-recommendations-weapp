@@ -3,7 +3,8 @@ import React, { PropsWithChildren, useEffect, useState } from "react";
 import styles from "./index.module.less";
 
 type Props = PropsWithChildren<{
-  input: object;
+  input?: object;
+  page?: object;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   getApi: Function;
   className?: string;
@@ -12,21 +13,29 @@ type Props = PropsWithChildren<{
 }>;
 
 const ScrollLoading: React.FC<Props> = (props) => {
-  const { getApi, setLoading, className, children, input, data, setData } =
-    props;
+  const {
+    getApi,
+    page,
+    setLoading,
+    className,
+    children,
+    input,
+    data,
+    setData,
+  } = props;
   const [refresherTriggered, setRefresherTriggered] = useState<boolean>(false);
   const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [page]);
 
   const fetchData = async () => {
     try {
       const payload = await getApi({
         size: 10,
         current: 1,
-        input: input,
+        input: page ? page : input,
       }).unwrap();
       setData(payload.records);
       setTotal(payload.total);
@@ -43,7 +52,7 @@ const ScrollLoading: React.FC<Props> = (props) => {
       const orderList = await getApi({
         size: 10,
         current: currentIndex,
-        input: input,
+        input: page ? page : input,
       }).unwrap();
       setTotal(orderList.total);
       setData([...data, ...orderList.records]);
@@ -60,7 +69,7 @@ const ScrollLoading: React.FC<Props> = (props) => {
       const orderList = await getApi({
         size: 10,
         current: 1,
-        input: input,
+        input: page ? page : input,
       }).unwrap();
       setData(orderList.records);
       setRefresherTriggered(false);
