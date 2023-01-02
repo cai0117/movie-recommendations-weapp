@@ -87,6 +87,13 @@ const MovieApi = baseApi.injectEndpoints({
         data: data,
       }),
     }),
+    //获取电影详情
+    getMovieInfo: builder.query<Movie, number>({
+      query: (id) => ({
+        url: `/movieInfo/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -96,6 +103,7 @@ export const {
   useLazyGetAllSoonMovieQuery,
   useGetAllMovieMutation,
   useGetHighMovieMutation,
+  useLazyGetMovieInfoQuery,
 } = MovieApi;
 
 export default MovieApi;

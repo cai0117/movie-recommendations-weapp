@@ -7,10 +7,11 @@ import styles from "./index.module.less";
 
 type Props = {
   data: MovieSoon[];
+  goMovieDetail: (id: number) => void;
 };
 
 const ComingSoon: React.FC<Props> = (props) => {
-  const { data } = props;
+  const { data, goMovieDetail } = props;
   return (
     <View className={styles.container}>
       <View className={styles.info}>
@@ -22,7 +23,11 @@ const ComingSoon: React.FC<Props> = (props) => {
       </View>
       <ScrollView className={styles.scrollY} scrollX enableFlex>
         {data.map((res) => (
-          <View className={styles.imgView} key={res.soonId}>
+          <View
+            className={styles.imgView}
+            key={res.soonId}
+            onClick={() => goMovieDetail(res.soonId)}
+          >
             <Image src={res.cover} mode="aspectFill" className={styles.img} />
             <Text className={styles.title}>{res.title}</Text>
             <Text className={styles.time}>

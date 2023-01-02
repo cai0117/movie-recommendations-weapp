@@ -7,10 +7,11 @@ import styles from "./index.module.less";
 
 type Props = {
   data: Movie[];
+  goMovieDetail: (id: number) => void;
 };
 
 const HotOnline: React.FC<Props> = (props) => {
-  const { data } = props;
+  const { data, goMovieDetail } = props;
   return (
     <View className={styles.container}>
       <View className={styles.info}>
@@ -22,7 +23,11 @@ const HotOnline: React.FC<Props> = (props) => {
       </View>
       <ScrollView className={styles.scrollY} scrollX enableFlex>
         {data.map((res) => (
-          <View className={styles.imgView} key={res.hotId}>
+          <View
+            className={styles.imgView}
+            key={res.hotId}
+            onClick={() => goMovieDetail(res.hotId)}
+          >
             <Image src={res.cover} mode="aspectFill" className={styles.img} />
             <Text className={styles.title}>{res.title}</Text>
             <Button className={styles.buyer}>购票</Button>

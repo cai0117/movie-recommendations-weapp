@@ -3,9 +3,12 @@ import { Swiper, SwiperItem, Image } from "@tarojs/components";
 import EXAMPLE from "@/images/coupons.png";
 import styles from "./index.module.less";
 
-type Props = {};
+type Props = {
+  goMovieDetail: (id: number) => void;
+};
 
 const HeaderSwiper: React.FC<Props> = (props) => {
+  const { goMovieDetail } = props;
   return (
     <Swiper
       className={styles.swiper}

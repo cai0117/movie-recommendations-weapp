@@ -4,6 +4,8 @@ export default defineAppConfig({
     "pages/mine/index",
     "pages/movie-classification/index",
     "pages/community/index",
+    "pages/movie-info/index",
+    "pages/personal-page/index",
   ],
   window: {
     backgroundTextStyle: "light",

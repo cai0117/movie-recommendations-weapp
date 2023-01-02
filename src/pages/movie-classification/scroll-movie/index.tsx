@@ -17,6 +17,7 @@ const ScrollMovie: React.FC<Props> = (props) => {
     if (label.length <= 0) return {};
     return { type: label.join("/") };
   }, [label]);
+
   return (
     <ScrollLoading
       className={styles.scroll}

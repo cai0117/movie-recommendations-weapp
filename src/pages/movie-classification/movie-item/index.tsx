@@ -1,4 +1,5 @@
 import React from "react";
+import Taro from "@tarojs/taro";
 import { View, Image, Button } from "@tarojs/components";
 import { Movie } from "@/api/movie";
 import styles from "./index.module.less";
@@ -8,9 +9,14 @@ type Props = {
 };
 const MovieItem: React.FC<Props> = (props) => {
   const { data } = props;
-
+  const goMovieDetail = (id: number) => {
+    Taro.navigateTo({ url: `/pages/movie-info/index?id=${id}` });
+  };
   return (
-    <View className={styles.content}>
+    <View
+      className={styles.content}
+      onClick={() => goMovieDetail(data.movieId)}
+    >
       <View className={styles.container}>
         <Image src={data.cover} mode="aspectFill" className={styles.img} />
         <View className={styles.info}>

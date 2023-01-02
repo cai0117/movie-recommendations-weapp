@@ -1,4 +1,5 @@
 import React from "react";
+import Taro from "@tarojs/taro";
 import { Image, View } from "@tarojs/components";
 import { Movie } from "@/api/movie";
 import { formatEvoNum } from "@/util/common";
@@ -10,9 +11,14 @@ type Props = {
 
 const MovieRatingInfo: React.FC<Props> = (props) => {
   const { data } = props;
-
+  const goMovieDetail = (id: number) => {
+    Taro.navigateTo({ url: `/pages/movie-info/index?id=${id}` });
+  };
   return (
-    <View className={styles.content}>
+    <View
+      className={styles.content}
+      onClick={() => goMovieDetail(data.movieId)}
+    >
       <View className={styles.communityContainer}>
         <Image src={data.cover} mode="aspectFill" className={styles.img} />
         <View className={styles.info}>

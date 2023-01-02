@@ -16,6 +16,7 @@ type Props = React.PropsWithChildren<
     fixedHeader: boolean;
     headerClassName: string;
     titleClassName: string;
+    style: React.CSSProperties;
     stickerFix: boolean; //sticker是否fix，默认relative
     headerLeftComponent?: () => React.ReactNode;
     headerSearchView?: () => React.ReactNode;
@@ -37,6 +38,7 @@ const BasePage: React.FC<Props> = (props) => {
     hideHeader,
     headerClassName = "",
     titleClassName = "",
+    style,
     stickerFix = false,
     headerLeftComponent,
     headerSearchView,
@@ -65,7 +67,7 @@ const BasePage: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <View className={`${styles.container} ${className}`}>
+    <View className={`${styles.container} ${className}`} style={style}>
       {!hideHeader && (
         <NavBar
           headerLeftComponent={headerLeftComponent}

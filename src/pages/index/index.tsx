@@ -7,6 +7,7 @@ import {
   BaseEventOrig,
   InputProps,
 } from "@tarojs/components";
+import Taro from "@tarojs/taro";
 import {
   Movie,
   MovieSoon,
@@ -56,6 +57,10 @@ const Index = () => {
     } catch (error) {}
   };
 
+  const goMovieDetail = (id: number) => {
+    Taro.navigateTo({ url: `/pages/movie-info/index?id=${id}` });
+  };
+
   const handleInput = (e: BaseEventOrig<InputProps.inputEventDetail>) => {
     setSearchValue(e.detail.value);
   };
@@ -88,9 +93,9 @@ const Index = () => {
         </View>
       )}
     >
-      <HeaderSwiper />
-      <HotOnline data={hotMovie.current} />
-      <ComingSoon data={soonMovie.current} />
+      <HeaderSwiper goMovieDetail={goMovieDetail} />
+      <HotOnline data={hotMovie.current} goMovieDetail={goMovieDetail} />
+      <ComingSoon data={soonMovie.current} goMovieDetail={goMovieDetail} />
     </BasePage>
   );
 };
