@@ -3,15 +3,17 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { baseApi } from "../api/base";
 import TokenReducer from "../slices/tokenSlice";
 import UserReducer from "../slices/userSlice";
+import ColorReducer from "../slices/colorSlice";
 
 export const store = configureStore({
   reducer: {
     [baseApi.reducerPath]: baseApi.reducer,
     token: TokenReducer,
-    user: UserReducer
+    user: UserReducer,
+    color: ColorReducer,
   },
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(baseApi.middleware)
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(baseApi.middleware),
 });
 
 setupListeners(store.dispatch);

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { View, Text, Image, Input } from "@tarojs/components";
+import { useAppSelector } from "@/redux/hooks";
 import { useLazyGetAllDictQuery, Dict } from "@/api/dict";
 import BasePage from "@/components/base-page";
 import SEARCHICON from "@/images/search.png";
@@ -11,24 +12,13 @@ import ScrollMovie from "./scroll-movie";
 
 const MovieClassificationPage = () => {
   const [confirmSelect, setConfirmSelect] = useState<boolean>(false);
-  const dict = useRef<Dict[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const selectValue = useRef<string[]>([]);
-  const [getDictTrigger, { isLoading }] = useLazyGetAllDictQuery();
-  console.log(selectValue.current);
-  useEffect(() => {
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    try {
-      const payload = await getDictTrigger().unwrap();
-      dict.current = payload;
-    } catch (error) {}
-  };
+  const dict = useAppSelector((state) => state.color);
 
   return (
     <BasePage
-      isLoading={isLoading || loading}
+      isLoading={loading}
       className={styles.page}
       headerClassName={styles.headerStyle}
       headerLeftComponent={() => (
@@ -62,7 +52,7 @@ const MovieClassificationPage = () => {
       <SelectView
         confirmSelect={confirmSelect}
         setConfirmSelect={setConfirmSelect}
-        data={dict.current}
+        data={dict}
         selectValue={selectValue}
       />
       <ScrollMovie setLoading={setLoading} label={selectValue.current} />

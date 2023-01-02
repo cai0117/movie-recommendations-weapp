@@ -14,9 +14,12 @@ import {
   useLazyGetAllHotMovieQuery,
   useLazyGetAllSoonMovieQuery,
 } from "@/api/movie";
+import { useAppDispatch } from "@/redux/hooks";
 import BasePage from "@/components/base-page";
+import { setColorType } from "@/slices/colorSlice";
 import downImg from "@/images/down.svg";
 import SEARCHICON from "@/images/search.png";
+import { useLazyGetAllDictQuery } from "@/api/dict";
 import styles from "./index.module.less";
 import HeaderSwiper from "./header-swiper";
 import HotOnline from "./hot-online";
@@ -27,8 +30,10 @@ const Index = () => {
   const [getHotMovieTrigger, { isLoading }] = useLazyGetAllHotMovieQuery();
   const [getSoonMovieTrigger, { isLoading: sonnLoading }] =
     useLazyGetAllSoonMovieQuery();
+  const [getDictTrigger, { isLoading: dictLoading }] = useLazyGetAllDictQuery();
   const hotMovie = useRef<Movie[]>([]);
   const soonMovie = useRef<MovieSoon[]>([]);
+  const dispatch = useAppDispatch();
   const goCityList = () => {
     // Taro.navigateTo({
     //   url: "/pages/city/index",
@@ -52,6 +57,8 @@ const Index = () => {
     try {
       const payload = await getHotMovieTrigger().unwrap();
       const soon = await getSoonMovieTrigger().unwrap();
+      const dict = await getDictTrigger().unwrap();
+      dispatch(setColorType(dict));
       hotMovie.current = payload;
       soonMovie.current = soon;
     } catch (error) {}
@@ -66,7 +73,7 @@ const Index = () => {
   };
   return (
     <BasePage
-      isLoading={isLoading || sonnLoading}
+      isLoading={isLoading || sonnLoading || dictLoading}
       className={styles.page}
       headerClassName={styles.headerStyle}
       headerLeftComponent={() => (

@@ -7,6 +7,7 @@ export interface Dict {
   id: number;
   value: string;
   code: string;
+  color: string;
 }
 
 const DictApi = baseApi.injectEndpoints({
