@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { View, Text, Image, Input } from "@tarojs/components";
 import { useAppSelector } from "@/redux/hooks";
-import { useLazyGetAllDictQuery, Dict } from "@/api/dict";
 import BasePage from "@/components/base-page";
 import SEARCHICON from "@/images/search.png";
 import ARROWDOWN from "@/images/arrow-down.png";

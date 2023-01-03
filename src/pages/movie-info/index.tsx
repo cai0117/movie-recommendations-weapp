@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import Taro, { useRouter } from "@tarojs/taro";
 import { useAppSelector } from "@/redux/hooks";
-import { Image } from "@tarojs/components";
 import BasePage from "@/components/base-page";
 import { Movie, useLazyGetMovieInfoQuery } from "@/api/movie";
 import { getBackgroundColorByType } from "@/util/color";
 import styles from "./index.module.less";
+import MovieItem from "./movie-item";
+import SeemItem from "./seem-item";
+import StaffInfo from "./staff-info";
+import PreviewVideo from "./preview-video";
+import Commend from "./commend";
 
 const MovieInfo = () => {
   const router = useRouter();
@@ -31,7 +35,11 @@ const MovieInfo = () => {
       className={styles.page}
       style={{ backgroundColor: color.current }}
     >
-      <Image src={data.cover} mode="aspectFill" className={styles.img} />
+      <MovieItem data={data} />
+      <SeemItem data={data} />
+      <StaffInfo data={data} />
+      <PreviewVideo data={data} />
+      <Commend data={data} />
     </BasePage>
   );
 };

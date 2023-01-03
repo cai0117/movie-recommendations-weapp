@@ -17,6 +17,8 @@ export interface Movie {
   release: string;
   star: number;
   title: string;
+  seemNum: number;
+  comingData: string;
   type: string;
 }
 

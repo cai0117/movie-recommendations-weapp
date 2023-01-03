@@ -25,3 +25,23 @@ export const formatEvoNum = (data: number) => {
     return param + unit[formatData];
   }
 };
+
+//人数格式化
+export const formatPerson = (data: number) => {
+  let formatData = data.toString();
+  if (formatData.length <= 3) {
+    return formatData;
+  } else {
+    let format = formatData.length % 3;
+    formatData =
+      format > 0
+        ? formatData.slice(0, format) +
+          "," +
+          formatData.slice(format, formatData.length).match(/\d{3}/g)!.join(",")
+        : formatData
+            .slice(format, formatData.length)
+            .match(/\d{3}/g)!
+            .join(",");
+    return formatData;
+  }
+};
