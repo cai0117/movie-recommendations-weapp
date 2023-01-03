@@ -1,13 +1,12 @@
 import React from "react";
 import { ScrollView, Image, View, Text, Button } from "@tarojs/components";
-import EXAMPLE from "@/images/coupons.png";
 import RIGHT_ARROW from "@/images/right_arrow.png";
 import { Movie } from "@/api/movie";
 import styles from "./index.module.less";
 
 type Props = {
   data: Movie[];
-  goMovieDetail: (id: number) => void;
+  goMovieDetail: (id: number, flag: string) => void;
 };
 
 const HotOnline: React.FC<Props> = (props) => {
@@ -26,7 +25,7 @@ const HotOnline: React.FC<Props> = (props) => {
           <View
             className={styles.imgView}
             key={res.hotId}
-            onClick={() => goMovieDetail(res.hotId)}
+            onClick={() => goMovieDetail(res.hotId, "hot")}
           >
             <Image src={res.cover} mode="aspectFill" className={styles.img} />
             <Text className={styles.title}>{res.title}</Text>

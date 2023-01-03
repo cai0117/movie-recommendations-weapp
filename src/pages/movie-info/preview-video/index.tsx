@@ -12,7 +12,12 @@ const PreviewVideo: React.FC<Props> = (props) => {
   return (
     <View className={styles.container}>
       <Text className={styles.staff}>预告片</Text>
-      <Video src={data.preview} initialTime={0} poster={data.cover} />
+      <Video
+        className={styles.video}
+        src={data.preview}
+        initialTime={0}
+        poster={data.cover}
+      />
     </View>
   );
 };

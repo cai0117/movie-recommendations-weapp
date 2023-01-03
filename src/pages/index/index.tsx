@@ -64,8 +64,8 @@ const Index = () => {
     } catch (error) {}
   };
 
-  const goMovieDetail = (id: number) => {
-    Taro.navigateTo({ url: `/pages/movie-info/index?id=${id}` });
+  const goMovieDetail = (id: number, flag?: string) => {
+    Taro.navigateTo({ url: `/pages/movie-info/index?id=${id}&flag=${flag}` });
   };
 
   const handleInput = (e: BaseEventOrig<InputProps.inputEventDetail>) => {

@@ -14,7 +14,7 @@ const SeemItem: React.FC<Props> = (props) => {
     <View className={styles.container}>
       <View className={styles.num}>
         <Text className={styles.person}>
-          {data.evaluateNum
+          {data.evaluateNum || data.seemNum
             ? formatPerson(data.evaluateNum ?? data.seemNum)
             : ""}
         </Text>

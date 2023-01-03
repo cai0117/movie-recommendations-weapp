@@ -7,7 +7,7 @@ import styles from "./index.module.less";
 
 type Props = {
   data: MovieSoon[];
-  goMovieDetail: (id: number) => void;
+  goMovieDetail: (id: number, flag?: string) => void;
 };
 
 const ComingSoon: React.FC<Props> = (props) => {
@@ -26,7 +26,7 @@ const ComingSoon: React.FC<Props> = (props) => {
           <View
             className={styles.imgView}
             key={res.soonId}
-            onClick={() => goMovieDetail(res.soonId)}
+            onClick={() => goMovieDetail(res.soonId, "soon")}
           >
             <Image src={res.cover} mode="aspectFill" className={styles.img} />
             <Text className={styles.title}>{res.title}</Text>

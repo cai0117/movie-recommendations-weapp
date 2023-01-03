@@ -26,12 +26,12 @@ const MovieItem: React.FC<Props> = (props) => {
         </Text>
         <Text className={styles.time}>
           上映日期：
-          {data.release
+          {data.release || data.comingData
             ? formatDate(data.release ?? data.comingData, false)
             : ""}
         </Text>
         <Text className={styles.time}>
-          电影时长：{data.movieTime ? data.movieTime : ""}
+          电影时长：{data.movieTime ? data.movieTime : "暂无"}
         </Text>
         <View className={styles.click}>
           <View
