@@ -2,18 +2,58 @@
 .container {
   width: 100%;
   margin-top: 40px;
-  height: 50%;
+  flex-direction: column;
+  flex: 1;
   display: flex;
-
-  align-items: center;
-  justify-content: center;
   background-color: @white-color;
   border-top-left-radius: @border-radius-large;
   border-top-right-radius: @border-radius-large;
 }
 .hot {
-  width: 690px;
-  padding-top: 40px;
+  width: 610px;
+  padding-top: 20px;
   flex: 1;
-  overflow: hidden;
+  padding-left: 80px;
+  padding-right: 30px;
+}
+.content {
+  margin-top: 30px;
+  display: flex;
+  margin-left: 30px;
+  flex-direction: column;
+  line-height: 46px;
+}
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.name {
+  font-size: @font-size-normal;
+  padding-left: 20px;
+  font-weight: bold;
+}
+.staff {
+  font-size: @font-size-xl;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.person {
+  display: flex;
+  align-items: center;
+}
+.info {
+  display: flex;
+  position: relative;
+}
+.img {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid #f4ea2a;
+  transform: rotate(45deg);
+  right: 30px;
+  top: -45px;
 }

@@ -1,0 +1,39 @@
+@import url("../../../styles/theme.less");
+.container {
+  width: 690px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  color: @white-color;
+  margin-left: 30px;
+}
+.staff {
+  color: @white-color;
+  font-size: @font-size-xl;
+  font-weight: bold;
+}
+.content {
+  margin-top: 30px;
+  display: flex;
+  line-height: 46px;
+}
+.expand {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: @font-size-normal;
+}
+.hide {
+  display: none;
+}
+.expandActor {
+  color: @white-color;
+  font-size: @font-size-normal;
+  flex: 1;
+}
+.actor {
+  color: @white-color;
+  font-size: @font-size-normal;
+  flex: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

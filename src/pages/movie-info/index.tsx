@@ -15,6 +15,7 @@ import SeemItem from "./seem-item";
 import StaffInfo from "./staff-info";
 import PreviewVideo from "./preview-video";
 import Commend from "./commend";
+import Synopsis from "./synopsis";
 
 const MovieInfo = () => {
   const router = useRouter();
@@ -56,6 +57,7 @@ const MovieInfo = () => {
     >
       <MovieItem data={data} />
       <SeemItem data={data} />
+      <Synopsis data={data} />
       <StaffInfo data={data} />
       <PreviewVideo data={data} />
       <Commend data={data} />
