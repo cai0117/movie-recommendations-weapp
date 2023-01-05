@@ -1,0 +1,68 @@
+@import url(../../styles/theme.less);
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  background: url("../../images/coupons.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
+  background-color: #eff4fa;
+  padding-bottom: 250px;
+}
+.backButton {
+  position: absolute;
+  left: 20px;
+  padding: 10px 10px 10px 20px;
+  width: 30px;
+  height: 30px;
+  z-index: 10;
+  box-sizing: content-box;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+}
+
+.slogan {
+  margin-top: 50px;
+  font-size: @font-size-xxl;
+  font-weight: bold;
+  color: @text-color-strong;
+}
+
+.button {
+  margin-top: 220px;
+  width: @button-width-large;
+  height: @button-height-large;
+  background: @primary-color;
+  border-radius: @button-height-large;
+  font-size: @font-size-large;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 4px;
+  line-height: @button-height-large;
+}
+
+.agreement {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+}
+
+.fontAgree {
+  font-size: @font-size-small;
+  color: @text-color-strong;
+}

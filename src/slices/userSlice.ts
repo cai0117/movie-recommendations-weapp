@@ -3,15 +3,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { USER_INFO_STORAGE } from "@/constants/storage";
 
 export type UserInfoType = {
-  avatar: string;
-  city: string;
-  country: string;
+  avatarUrl: string;
+  cityRegionId: string;
   createTime: string;
   gender: number;
-  id: string;
+  customerId: number;
   name: string;
   nickname: string;
-  province: string;
+  provinceRegionId: string;
   tel: string;
   updateTime: string;
 };
@@ -30,17 +29,17 @@ const userSlice = createSlice({
     setUserInfo: (_, action: PayloadAction<UserInfoType>) => {
       Taro.setStorage({
         key: USER_INFO_STORAGE,
-        data: action.payload
+        data: action.payload,
       });
       return action.payload;
     },
     clear: () => {
       Taro.removeStorage({
-        key: USER_INFO_STORAGE
+        key: USER_INFO_STORAGE,
       });
       return {} as UserInfoType;
-    }
-  }
+    },
+  },
 });
 
 export const { setUserInfo, clear } = userSlice.actions;

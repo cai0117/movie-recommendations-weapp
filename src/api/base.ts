@@ -79,6 +79,10 @@ const TaroBaseQuery =
         //   ...header,
         // },
       });
+
+      if (!store.getState().token.token) {
+        Taro.reLaunch({ url: "/pages/login/index" });
+      }
       // const { data, statusCode } = result;
       // const { msg, success } = data;
       // token失效

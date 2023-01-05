@@ -2,18 +2,21 @@ import React from "react";
 import { View, Image, Text } from "@tarojs/components";
 import BasePage from "@/components/base-page";
 import EXAMPLE from "@/images/coupons.png";
+import { useAppSelector } from "@/redux/hooks";
 import RIGHT_ARROW from "@/images/right_arrow.png";
 import Operation from "./operation";
 import styles from "./index.module.less";
 import WatchMovie from "./watch-movie";
 
 const MinePage = () => {
+  const { avatarUrl, name } = useAppSelector((state) => state.user);
+  console.log(avatarUrl);
   return (
     <BasePage className={styles.page}>
       <View className={styles.userInfo}>
         <View className={styles.user}>
-          <Image src={EXAMPLE} mode="aspectFill" className={styles.avatar} />
-          <Text className={styles.name}>@sole</Text>
+          <Image src={avatarUrl} mode="aspectFill" className={styles.avatar} />
+          <Text className={styles.name}>{name}</Text>
         </View>
         <View className={styles.userHome}>
           个人主页
