@@ -80,7 +80,7 @@ const TaroBaseQuery =
         // },
       });
 
-      if (!store.getState().token.token) {
+      if (store.getState().token.token.length === 0) {
         Taro.reLaunch({ url: "/pages/login/index" });
       }
       // const { data, statusCode } = result;

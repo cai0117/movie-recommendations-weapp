@@ -9,12 +9,42 @@
   align-items: center;
   box-sizing: border-box;
   position: relative;
-  background: url("../../images/coupons.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-attachment: fixed;
-  background-color: #eff4fa;
+  z-index: 1;
   padding-bottom: 250px;
+
+  overflow: hidden;
+}
+.container::after {
+  content: "";
+  position: absolute;
+  filter: blur(20px);
+  width: 100%;
+  background-image: url(https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2372307693.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 0;
+  left: 30px;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: -1;
+}
+.container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+
+  background-image: url(https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2372307693.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  top: 0;
+  left: -30px;
+  right: 0;
+  bottom: 0;
+  filter: blur(20px);
+  z-index: -1;
 }
 .backButton {
   position: absolute;
@@ -25,44 +55,37 @@
   z-index: 10;
   box-sizing: content-box;
 }
-
-.logo {
-  width: 150px;
-  height: 150px;
+.item {
+  width: 300px;
+  height: 300px;
 }
-
+.logo {
+  width: 300px;
+  height: 300px;
+}
+.swiper {
+  width: 410px;
+  height: 300px;
+  text-align: center;
+}
 .slogan {
   margin-top: 50px;
   font-size: @font-size-xxl;
   font-weight: bold;
-  color: @text-color-strong;
+  color: @white-color;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  filter: blur(2px);
 }
 
 .button {
   margin-top: 220px;
   width: @button-width-large;
   height: @button-height-large;
-  background: @primary-color;
+  background: linear-gradient(to right, rgb(241, 116, 116), rgb(238, 212, 212));
   border-radius: @button-height-large;
   font-size: @font-size-large;
   font-weight: bold;
   color: #ffffff;
   letter-spacing: 4px;
   line-height: @button-height-large;
-}
-
-.agreement {
-  position: absolute;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  bottom: 0;
-  left: 0;
-}
-
-.fontAgree {
-  font-size: @font-size-small;
-  color: @text-color-strong;
 }

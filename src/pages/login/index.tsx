@@ -2,10 +2,9 @@ import React, { useState, useEffect, useMemo } from "react";
 import Taro from "@tarojs/taro";
 import { View, Image, Button } from "@tarojs/components";
 import NavBar from "@/components/nav-bar";
-import PIC_LOGIN_LOGO from "@/images/mine.png";
 import PIC_ARROW from "@/images/arrow.png";
 import { useLoginMutation } from "@/api/loginApi";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useAppDispatch } from "@/redux/hooks";
 import { setToken } from "@/slices/tokenSlice";
 import {
   setUserInfo as storageUserInfo,
@@ -16,24 +15,19 @@ import styles from "./index.module.less";
 const LoginPage = () => {
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
-  const { token } = useAppSelector((state) => state.token);
 
   const loginWithUserId = async () => {
     Taro.getUserProfile({
       desc: "获取您的昵称、头像", // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: async (res) => {
         // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-
-        console.log(res);
         try {
           const payload = await login({
             avatarUrl: res.userInfo.avatarUrl || "",
             name: res.userInfo.nickName || "",
             origin: "WECHAT",
-            token: token ? token : "",
             tel: "15359792615",
           }).unwrap();
-          console.log(payload);
           dispatch(setToken(payload.token));
           dispatch(storageUserInfo(payload.userInfo));
           if (Taro.getCurrentPages().length > 1) {
@@ -59,9 +53,13 @@ const LoginPage = () => {
   const goHome = () => {
     Taro.reLaunch({ url: "/pages/index/index" });
   };
-
   return (
-    <View className={styles.container}>
+    <View
+      className={styles.container}
+      style={{
+        background: `url(https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2372307693.jpg) center/cover no-repeat`,
+      }}
+    >
       <NavBar
         fixed
         headerLeftComponent={() => (
@@ -73,8 +71,6 @@ const LoginPage = () => {
         )}
         goBack={goHome}
       />
-      <Image className={styles.logo} src={PIC_LOGIN_LOGO} />
-      <View className={styles.slogan}>记录美好旅途瞬间</View>
 
       <Button className={styles.button} onClick={loginWithUserId}>
         微信快捷登录
