@@ -7,6 +7,7 @@ export default defineAppConfig({
     "pages/community/index",
     "pages/movie-info/index",
     "pages/personal-page/index",
+    "pages/seat-selection/index",
   ],
   window: {
     backgroundTextStyle: "light",

@@ -1,7 +1,7 @@
 {
   "miniprogramRoot": "./",
   "projectname": "movie-recommendations-wx",
-  "appid": "testAppId",
+  "appid": "wxc6fd7221483e23d6",
   "setting": {
     "es6": false,
     "minified": false

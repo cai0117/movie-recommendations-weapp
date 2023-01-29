@@ -24,7 +24,7 @@ const MovieItem: React.FC<Props> = (props) => {
           <View className={styles.point}>评分 {data.rate}</View>
           <View className={styles.point}>主演:{data.protagonist}</View>
         </View>
-        <Button className={styles.goBuy}>购票</Button>
+        {/* <Button className={styles.goBuy}>购票</Button> */}
       </View>
     </View>
   );

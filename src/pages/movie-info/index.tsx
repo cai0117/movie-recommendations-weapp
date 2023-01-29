@@ -23,32 +23,33 @@ const MovieInfo = () => {
   const [getMovieInfoTrigger, { isLoading }] = useLazyGetMovieInfoQuery();
   const [getMovieHotInfoTrigger, { isLoading: hotLoading }] =
     useLazyGetMovieHotInfoQuery();
-  const [getMovieSonnInfoTrigger, { isLoading: soonLoading }] =
+  const [getMovieSoonInfoTrigger, { isLoading: soonLoading }] =
     useLazyGetMovieSoonInfoQuery();
   const dict = useAppSelector((state) => state.color);
   const [data, setData] = useState<Movie>({} as Movie);
   const color = useRef<string>("");
+
+  const getDiffApi = (apiFlag: string | undefined) => {
+    if (!apiFlag) {
+      return getMovieInfoTrigger(Number(id)).unwrap();
+    } else if (apiFlag === "soon") {
+      return getMovieSoonInfoTrigger(Number(id)).unwrap();
+    } else {
+      return getMovieHotInfoTrigger(Number(id)).unwrap();
+    }
+  };
 
   useEffect(() => {
     fetchData();
   }, []);
   const fetchData = async () => {
     try {
-      if (!flag) {
-        const payload = await getMovieInfoTrigger(Number(id)).unwrap();
-        setData(payload);
-        color.current = getBackgroundColorByType(payload.type, dict);
-      } else if (flag === "soon") {
-        const payload = await getMovieSonnInfoTrigger(Number(id)).unwrap();
-        setData(payload);
-        color.current = getBackgroundColorByType(payload.type, dict);
-      } else {
-        const payload = await getMovieHotInfoTrigger(Number(id)).unwrap();
-        setData(payload);
-        color.current = getBackgroundColorByType(payload.type, dict);
-      }
+      const payload = await getDiffApi(flag);
+      setData(payload);
+      color.current = getBackgroundColorByType(payload.type, dict);
     } catch (error) {}
   };
+
   return (
     <BasePage
       isLoading={isLoading || hotLoading || soonLoading}
