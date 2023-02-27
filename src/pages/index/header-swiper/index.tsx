@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperItem, Image } from "@tarojs/components";
-import EXAMPLE from "@/images/coupons.png";
+import { Movie, useGetAllMovieMutation } from "@/api/movie";
 import styles from "./index.module.less";
 
 type Props = {
@@ -9,6 +9,19 @@ type Props = {
 
 const HeaderSwiper: React.FC<Props> = (props) => {
   const { goMovieDetail } = props;
+  const [data, setData] = useState<Movie[]>([]);
+  const [getAllMovie] = useGetAllMovieMutation();
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    const payload = await getAllMovie({
+      current: 5,
+      size: 6,
+      input: {},
+    }).unwrap();
+    setData(payload.records);
+  };
   return (
     <Swiper
       className={styles.swiper}
@@ -16,12 +29,11 @@ const HeaderSwiper: React.FC<Props> = (props) => {
       autoplay
       indicatorActiveColor="#ffffff"
     >
-      <SwiperItem>
-        <Image src={EXAMPLE} mode="aspectFill" className={styles.img} />
-      </SwiperItem>
-      <SwiperItem>
-        <Image src={EXAMPLE} mode="aspectFill" className={styles.img} />
-      </SwiperItem>
+      {data.map((res) => (
+        <SwiperItem key={res.movieId}>
+          <Image src={res.cover} mode="aspectFill" className={styles.img} />
+        </SwiperItem>
+      ))}
     </Swiper>
   );
 };

@@ -15,7 +15,7 @@ const MinePage = () => {
     Taro.navigateTo({ url: "/pages/personal-page/index" });
   };
   return (
-    <BasePage className={styles.page}>
+    <BasePage className={styles.page} goBack={() => null}>
       <View className={styles.userInfo}>
         <View className={styles.user}>
           <Image src={avatarUrl} mode="aspectFill" className={styles.avatar} />
