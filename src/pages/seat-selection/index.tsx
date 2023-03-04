@@ -1,12 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import {
-  View,
-  Image,
-  Text,
-  MovableArea,
-  MovableView,
-  Button,
-} from "@tarojs/components";
+import React, { useMemo, useRef, useState } from "react";
+import { View, MovableArea, MovableView, Button } from "@tarojs/components";
+import Taro from "@tarojs/taro";
 import BasePage from "@/components/base-page";
 import Seat from "./seat";
 import styles from "./index.module.less";
@@ -61,7 +55,12 @@ const SeatSelection = () => {
             </View>
           ))}
         </View>
-        <Button className={styles.pay}>购票</Button>
+        <Button
+          className={styles.pay}
+          onClick={() => Taro.navigateTo({ url: "/pages/ticket-qrcode/index" })}
+        >
+          购票
+        </Button>
       </View>
     </BasePage>
   );

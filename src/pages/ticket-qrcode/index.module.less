@@ -1,0 +1,93 @@
+@import url("../../styles/theme.less");
+.page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: @background-color-weak;
+}
+.comboDetails {
+  margin-top: 20px;
+  width: 710px;
+  background-color: @white-color;
+  border: none;
+  border-radius: @border-radius-large;
+}
+.info {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 35px;
+  padding-right: 35px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  line-height: 50px;
+}
+.big {
+  font-size: @font-size-xxl;
+  font-weight: bold;
+}
+.more {
+  font-size: @font-size-xl;
+  font-weight: bold;
+}
+.movie {
+  width: 130px;
+  height: 220px;
+  border-radius: @border-radius;
+}
+.diliver {
+  width: 100%;
+  height: 52px;
+  display: block;
+  background: radial-gradient(
+        26px at 0px 26px,
+        @background-color 20px,
+        @white-color 20px
+      )
+      left,
+    radial-gradient(
+        26px at 100% 26px,
+        @background-color 20px,
+        @white-color 20px
+      )
+      right;
+  background-size: 50% 100%; /* width height 一般和 background-repeat: no-repeat; 搭配使用 */
+  background-repeat: no-repeat;
+}
+.dash {
+  width: calc(100% - 52px);
+  margin-left: 26px;
+  height: 26px;
+  border-bottom: 1rpx dashed #e4e5e7;
+}
+.qrcode {
+  width: 710px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 10px;
+  .QRcode {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .text {
+    text-align: left;
+    padding-left: 35px;
+    box-sizing: border-box;
+    font-size: @font-size-xl;
+    font-weight: bold;
+    width: 100%;
+  }
+  .codeBo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

@@ -8,6 +8,8 @@ export default defineAppConfig({
     "pages/movie-info/index",
     "pages/personal-page/index",
     "pages/seat-selection/index",
+    "pages/search-page/index",
+    "pages/ticket-qrcode/index",
   ],
   window: {
     backgroundTextStyle: "light",

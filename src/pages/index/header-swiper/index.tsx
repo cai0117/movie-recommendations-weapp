@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
+import Taro from "@tarojs/taro";
 import { Swiper, SwiperItem, Image } from "@tarojs/components";
 import { Movie, useGetAllMovieMutation } from "@/api/movie";
 import styles from "./index.module.less";
 
-type Props = {
-  goMovieDetail: (id: number) => void;
-};
+type Props = {};
 
 const HeaderSwiper: React.FC<Props> = (props) => {
-  const { goMovieDetail } = props;
   const [data, setData] = useState<Movie[]>([]);
   const [getAllMovie] = useGetAllMovieMutation();
   useEffect(() => {
@@ -22,6 +20,9 @@ const HeaderSwiper: React.FC<Props> = (props) => {
     }).unwrap();
     setData(payload.records);
   };
+  const goMovieDetail = (id: number) => {
+    Taro.navigateTo({ url: `/pages/movie-info/index?id=${id}` });
+  };
   return (
     <Swiper
       className={styles.swiper}
@@ -31,7 +32,12 @@ const HeaderSwiper: React.FC<Props> = (props) => {
     >
       {data.map((res) => (
         <SwiperItem key={res.movieId}>
-          <Image src={res.cover} mode="aspectFill" className={styles.img} />
+          <Image
+            src={res.cover}
+            mode="aspectFill"
+            className={styles.img}
+            onClick={() => goMovieDetail(res.movieId)}
+          />
         </SwiperItem>
       ))}
     </Swiper>

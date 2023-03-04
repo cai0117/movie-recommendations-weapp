@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { View, Text, Image, Input } from "@tarojs/components";
+import Taro from "@tarojs/taro";
 import { useAppSelector } from "@/redux/hooks";
 import BasePage from "@/components/base-page";
 import SEARCHICON from "@/images/search.png";
@@ -36,7 +37,10 @@ const MovieClassificationPage = () => {
         </View>
       )}
       headerSearchView={() => (
-        <View className={styles.search}>
+        <View
+          className={styles.search}
+          onClick={() => Taro.navigateTo({ url: `/pages/search-page/index` })}
+        >
           <View className={styles.icon}>
             <Image
               className={styles.searchIcon}
@@ -44,7 +48,7 @@ const MovieClassificationPage = () => {
               mode="widthFix"
             />
           </View>
-          <Input className={styles.input} placeholder="输入" focus />
+          <Input className={styles.input} placeholder="去搜索" disabled />
         </View>
       )}
     >

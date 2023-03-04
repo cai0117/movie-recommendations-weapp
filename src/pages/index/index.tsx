@@ -26,7 +26,6 @@ import HotOnline from "./hot-online";
 import ComingSoon from "./coming-soon";
 
 const Index = () => {
-  const [searchValue, setSearchValue] = useState<string>("");
   const [getHotMovieTrigger, { isLoading }] = useLazyGetAllHotMovieQuery();
   const [getSoonMovieTrigger, { isLoading: sonnLoading }] =
     useLazyGetAllSoonMovieQuery();
@@ -68,9 +67,6 @@ const Index = () => {
     Taro.navigateTo({ url: `/pages/movie-info/index?id=${id}&flag=${flag}` });
   };
 
-  const handleInput = (e: BaseEventOrig<InputProps.inputEventDetail>) => {
-    setSearchValue(e.detail.value);
-  };
   return (
     <BasePage
       isLoading={isLoading || sonnLoading || dictLoading}
@@ -83,7 +79,10 @@ const Index = () => {
         </View>
       )}
       headerSearchView={() => (
-        <View className={styles.search}>
+        <View
+          className={styles.search}
+          onClick={() => Taro.navigateTo({ url: `/pages/search-page/index` })}
+        >
           <View className={styles.icon}>
             <Image
               className={styles.searchIcon}
@@ -91,16 +90,11 @@ const Index = () => {
               mode="widthFix"
             />
           </View>
-          <Input
-            className={styles.input}
-            placeholder="输入"
-            focus
-            onBlur={handleInput}
-          />
+          <Input className={styles.input} placeholder="去搜索" disabled />
         </View>
       )}
     >
-      <HeaderSwiper goMovieDetail={goMovieDetail} />
+      <HeaderSwiper />
       <HotOnline data={hotMovie.current} goMovieDetail={goMovieDetail} />
       <ComingSoon data={soonMovie.current} goMovieDetail={goMovieDetail} />
     </BasePage>
