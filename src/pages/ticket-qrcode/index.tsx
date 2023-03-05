@@ -4,7 +4,7 @@ import BasePage from "@/components/base-page";
 import QRCode from "@/components/qrcode";
 import styles from "./index.module.less";
 
-const SeatSelection = () => {
+const TicketQRCode = () => {
   return (
     <BasePage className={styles.page} title="我的电影票">
       <View className={styles.comboDetails}>
@@ -32,4 +32,4 @@ const SeatSelection = () => {
     </BasePage>
   );
 };
-export default SeatSelection;
+export default TicketQRCode;
